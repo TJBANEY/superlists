@@ -1,10 +1,14 @@
 from selenium import webdriver
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 import unittest
+
+caps = DesiredCapabilities.FIREFOX
+caps["marionette"] = True
 
 class NewVisitorTest(unittest.TestCase):  
 
     def setUp(self):  
-        self.browser = webdriver.Firefox()
+        self.browser = webdriver.Firefox(capabilities=caps)
 
     def tearDown(self):  
         self.browser.quit()
@@ -19,7 +23,7 @@ class NewVisitorTest(unittest.TestCase):
         self.fail('Finish the test!')  
 
         # She is invited to enter a to-do item straight away
-        [...rest of comments as before]
+        # [...rest of comments as before]
 
 if __name__ == '__main__':  
     unittest.main(warnings='ignore')  
